@@ -1,0 +1,139 @@
+class Project
+{
+    private int prj_id;
+    private String prj_name;
+    private String prj_manager;
+    private Employee[] employees;
+    
+    public void setPrjId(int prj_id)
+    {
+        this.prj_id=prj_id;
+    }
+    public void setPrjName(String prj_name)
+    {
+        this.prj_name=prj_name;
+    }
+    public void setPrjManager(String prj_manager)
+    {
+        this.prj_manager=prj_manager;
+    }
+    public void setEmployees(Employee... employees)
+    {
+        this.employees=employees;
+    }
+    
+    
+    public int getPrjId()
+    {
+        return prj_id;
+    }
+    public String getPrjName()
+    {
+        return prj_name;
+    }
+    public String getPrjManager()
+    {
+        return prj_manager;
+    }
+    public Employee[] getEmployees()
+    {
+        return employees;
+    }
+    
+    public void disp()
+    {
+           System.out.println("Project Details");
+           
+            System.out.println("project id "+prj_id);
+            System.out.println("project Name "+prj_name);
+            System.out.println("project Manager "+prj_manager);
+            System.out.println();
+            System.out.println("Employee Details");
+            System.out.println();
+            for(Employee elem:employees)
+            {
+                System.out.println("employee id "+elem.getEmpId());
+                System.out.println("Employee name "+elem.getEmpName());
+            }
+            System.out.println();
+    }
+}
+class Employee
+{
+    private int emp_id;
+    private String emp_name;
+    private Project[] projects;
+    public Employee(int emp_id,String emp_name,Project... projects)
+    {
+        this.emp_id=emp_id;
+        this.emp_name=emp_name;
+        this.projects=projects;
+    }
+    public int getEmpId()
+    {
+        return emp_id;
+    }
+    public String getEmpName()
+    {
+        return emp_name;
+    }
+    public Project[] getProjects()
+    {
+        return projects;
+    }
+     public void disp()
+    {
+        System.out.println("employee details");
+        System.out.println("emp id "+emp_id);
+        System.out.println("emp name "+emp_name);
+        System.out.println("Project Details");
+        for(Project elem:projects)
+        {
+            System.out.println("project id "+elem.getPrjId());
+            System.out.println("project Name "+elem.getPrjName());
+            System.out.println("project Manager "+elem.getPrjManager());
+        }
+        System.out.println();
+    }
+}
+
+class Main
+{
+    public static void main (String[] args) {
+        Project p1=new Project();
+       
+        
+        Project p2=new Project();
+       
+        
+        Project p3=new Project();
+       
+    
+        Employee emp1=new Employee(1546,"smd",p1,p2);
+        Employee emp2=new Employee(1678,"sma",p1,p3);
+        Employee emp3=new Employee(1894,"bh",p1,p2,p3);
+        
+         p1.setPrjId(1546);
+        p1.setPrjName("AR");
+        p1.setPrjManager("Sami");
+        p1.setEmployees(emp1,emp2);
+        
+         p2.setPrjId(1678);
+        p2.setPrjName("PR");
+        p2.setPrjManager("Mustaq");
+        p2.setEmployees(emp1,emp3);
+        
+         p3.setPrjId(1894);
+        p3.setPrjName("Test");
+        p3.setPrjManager("Baba");
+        p3.setEmployees(emp1,emp2,emp3);
+       
+        emp1.disp(); 
+         emp2.disp();
+         emp3.disp();
+         
+         p1.disp();
+         p2.disp();
+         p3.disp();
+    }
+}
